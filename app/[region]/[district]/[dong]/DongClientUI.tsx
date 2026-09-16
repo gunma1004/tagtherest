@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import ClientTextMixer from "@/app/ClientTextMixer";
+import ClientTextMixer from "../../../ClientTextMixer";
 
 interface DongClientUIProps {
   region: string;
