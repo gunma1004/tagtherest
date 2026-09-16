@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import ClientTextMixer from "../../ClientTextMixer";
+import ClientTextMixer from "@/app/ClientTextMixer";
 
 interface RegionalClientUIProps {
   region: string;
@@ -10,7 +10,6 @@ interface RegionalClientUIProps {
   dongName: string;
 }
 
-// 🌟 요청하신 태그더레스트 고정 제휴 샵 목록 (이름 변경 불가)
 const initialLocalShops = [
   { id: 1, name: "한국미인테라피", desc: "도심 속 깊은 이완과 감성 테라피를 선사하는 프리미엄 웰니스 쉼터", phone: "0507-1280-3303", price: "100,000원부터~", image: "/shop1.jpg" },
   { id: 2, name: "오늘밤테라피", desc: "지친 하루 끝에 가벼운 활력을 더해주는 프라이빗 바디 케어", phone: "0507-1280-3223", price: "60,000원부터~", image: "/shop2.jpg" },
@@ -19,7 +18,6 @@ const initialLocalShops = [
   { id: 5, name: "한국골든테라피", desc: "정직한 정찰제 운영과 포근한 안식을 약속하는 스페셜 힐링 스팟", phone: "0507-1280-3361", price: "110,000원부터~", image: "/shop5.jpg" }
 ];
 
-// 영문 지역 코드를 한글 명칭으로 변환
 function getRegionShortName(region: string): string {
   switch (region.toLowerCase()) {
     case "seoul": return "서울";
@@ -33,7 +31,6 @@ export default function RegionalClientUI({ region, district, dongName }: Regiona
   const [displayShops, setDisplayShops] = useState<typeof initialLocalShops>([]);
 
   useEffect(() => {
-    // 새로고침 시 5개의 샵 순서가 무작위로 섞이도록 설정
     const shuffled = [...initialLocalShops].sort(() => Math.random() - 0.5);
     setDisplayShops(shuffled);
   }, []);
@@ -45,7 +42,6 @@ export default function RegionalClientUI({ region, district, dongName }: Regiona
     <div className="bg-[#0b0b0f] text-gray-100 min-h-screen flex flex-col font-sans selection:bg-amber-400 selection:text-black">
       <main className="max-w-4xl mx-auto px-4 py-8 w-full flex-1 space-y-10">
         
-        {/* 상단 지역 타이틀 영역 */}
         <section className="text-center space-y-3">
           <span className="inline-block px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-bold text-xs">
             📍 {locationTitle} 제휴 스팟 안내
@@ -58,10 +54,8 @@ export default function RegionalClientUI({ region, district, dongName }: Regiona
           </p>
         </section>
 
-        {/* 다이내믹 텍스트 믹서 배너 */}
         <ClientTextMixer locationText={locationTitle} />
 
-        {/* 샵 리스트 영역 (클릭 시 샵 상세 페이지로 이동) */}
         <section className="space-y-4">
           <div className="flex items-center justify-between border-b border-white/10 pb-3">
             <h2 className="text-sm font-extrabold text-amber-300">✨ 실시간 추천 제휴 스팟 (새로고침 시 변경)</h2>
@@ -95,7 +89,6 @@ export default function RegionalClientUI({ region, district, dongName }: Regiona
           </div>
         </section>
 
-        {/* 🌟 샵 아래 추가된 읽을거리 (웰니스 가이드) 영역 */}
         <section className="mt-12 pt-8 border-t border-white/10 space-y-6">
           <div className="text-center space-y-1">
             <span className="text-[11px] text-amber-400 font-extrabold uppercase tracking-widest">WELLNESS STORY & GUIDE</span>
