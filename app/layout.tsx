@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   verification: {
     google: "", // 추후 구글 서치콘솔 인증 코드로 입력하세요
     other: {
-      "naver-site-verification": "e4e51d8f056a8bb9ca75bd713f374ab804521183",
+      "naver-site-verification": "281eee39eb8d595e393a2eb59ea89ec37ae51feb",
     },
   },
   openGraph: {
