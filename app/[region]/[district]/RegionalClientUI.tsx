@@ -2,12 +2,20 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import ClientTextMixer from "@/app/ClientTextMixer";
 
 interface RegionalClientUIProps {
   region: string;
   district: string;
   dongName: string;
+}
+
+// 텍스트 믹서 컴포넌트를 파일 내부에 직접 포함하여 경로 에러 차단
+function ClientTextMixer({ locationText }: { locationText: string }) {
+  return (
+    <div className="bg-[#121216] border border-amber-500/20 p-4 rounded-2xl text-center text-xs text-gray-300 shadow-inner">
+      <span className="text-amber-400 font-bold">✨ {locationText} 단독 제휴 혜택:</span> 방문 예약 시 특별 웰니스 프로그램 및 프리미엄 할인 적용!
+    </div>
+  );
 }
 
 const initialLocalShops = [
