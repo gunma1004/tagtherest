@@ -102,13 +102,13 @@ const regionData: Record<string, { name: string; districts: Record<string, { nam
   }
 };
 
-// 🌟 요청하신 원본 샵 이름은 그대로 유지하되, 스팸성 문구를 제거하고 클린한 웰니스 소개로 정리
+// 태그더레스트 추천 제휴 샵 목록
 const initialLocalShops = [
-  { id: 1, name: "한국미녀홈타이", desc: "수도권 주요 지역 프리미엄 스웨디시 & 아로마 웰니스 테라피", phone: "0507-1280-3303", price: "100,000원부터~", image: "/shop1.jpg" },
-  { id: 2, name: "너무이쁜홈타이", desc: "품격 있는 힐링을 선사하는 정통 마사지 및 프라이빗 바디케어", phone: "0507-1280-3190", price: "60,000원부터~", image: "/shop2.jpg" },
-  { id: 3, name: "예쁜걸홈타이", desc: "철저한 위생 관리와 쾌적한 릴렉스 아로마 테라피 프로그램", phone: "0507-1280-3185", price: "60,000원부터~", image: "/shop3.jpg" },
-  { id: 4, name: "퀸즈홈테라피", desc: "전문 테라피스트들의 1:1 맞춤형 VIP 피로회복 웰니스 케어", phone: "0507-1280-3222", price: "60,000원부터~", image: "/shop4.jpg" },
-  { id: 5, name: "한국골든테라피", desc: "정직한 정찰제 운영과 편안한 힐링을 약속하는 감성 스웨디시", phone: "0507-1280-3360", price: "110,000원부터~", image: "/shop5.jpg" }
+  { id: 1, name: "한국미인테라피", desc: "도심 속 깊은 이완과 감성 테라피를 선사하는 프리미엄 웰니스 쉼터", phone: "0507-1280-3303", price: "100,000원부터~", image: "/shop1.jpg" },
+  { id: 2, name: "오늘밤테라피", desc: "지친 하루 끝에 가벼운 활력을 더해주는 프라이빗 바디 케어", phone: "0507-1280-3223", price: "60,000원부터~", image: "/shop2.jpg" },
+  { id: 3, name: "주주테라피", desc: "청결한 위생 관리와 쾌적한 환경에서 즐기는 전문 아로마 프로그램", phone: "0507-1280-3193", price: "60,000원부터~", image: "/shop3.jpg" },
+  { id: 4, name: "퀸즈홈테라피", desc: "전문 테라피스트들의 섬세한 터치로 완성되는 1:1 맞춤형 리프레시", phone: "0507-1280-3334", price: "60,000원부터~", image: "/shop4.jpg" },
+  { id: 5, name: "한국골든테라피", desc: "정직한 정찰제 운영과 포근한 안식을 약속하는 스페셜 힐링 스팟", phone: "0507-1280-3361", price: "110,000원부터~", image: "/shop5.jpg" }
 ];
 
 export default function MainClientUI() {
@@ -167,30 +167,30 @@ export default function MainClientUI() {
         <section className="text-center my-2">
           <div className="overflow-hidden rounded-3xl border-2 border-amber-500/40 shadow-[0_0_50px_rgba(245,158,11,0.25)] relative h-64 md:h-84 flex items-center justify-center p-6 group">
             <div className="absolute inset-0 z-0">
-              <img src="/banner.jpg" alt="메인 힐링 배너" className="w-full h-full object-cover filter brightness-[0.5] contrast-[1.1]" />
+              <img src="/banner.jpg" alt="태그더레스트 메인 배너" className="w-full h-full object-cover filter brightness-[0.5] contrast-[1.1]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-amber-500/10"></div>
             </div>
             
             <div className="relative z-10 space-y-3.5 max-w-xl mx-auto">
               <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 text-black font-black text-xs tracking-widest shadow-[0_0_20px_rgba(245,158,11,0.5)]">
-                ✨ 위치 테라피 - 서울 경기 인천 웰니스 플랫폼
+                🌿 태그더레스트 - 일상 속 완벽한 쉼표
               </span>
               <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-                수도권 전 지역 <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-300 bg-clip-text text-transparent">프리미엄 힐링 마사지 안내</span>
+                수도권 전 지역 <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-300 bg-clip-text text-transparent">프리미엄 웰니스 휴식처</span>
               </h1>
               <p className="text-gray-200 text-xs md:text-sm font-medium drop-shadow">
-                검증된 베테랑 테라피스트의 맞춤형 바디케어! 스웨디시 및 테라피 정보를 한눈에 만나보세요.
+                지친 일상에서 벗어나 깊은 이완과 리프레시를 선사하는 엄선된 힐링 공간 큐레이션.
               </p>
             </div>
           </div>
         </section>
 
-        {/* 제휴업체 리스트 섹션 (새로고침 시 랜덤 5개 노출, 원본 샵 이름 고정) */}
+        {/* 제휴업체 리스트 섹션 */}
         <section className="space-y-6">
           <div className="text-center mb-6">
-            <p className="text-xs text-amber-400 font-extrabold tracking-widest uppercase">BEST RECOMMENDED SHOPS</p>
+            <p className="text-xs text-amber-400 font-extrabold tracking-widest uppercase">CURATED WELLNESS SPOTS</p>
             <h2 className="text-xl md:text-2xl font-black text-white mt-1">
-              🏆 위치 테라피 추천 프리미엄 제휴점
+              ✨ 태그더레스트 추천 제휴 스팟
             </h2>
           </div>
 
@@ -221,13 +221,13 @@ export default function MainClientUI() {
             
             <div className="mb-5">
               <label className="text-xs text-amber-300 font-black uppercase tracking-wider flex items-center gap-1.5">
-                📍 내 주변 웰니스 마사지 검색하기
+                📍 내 주변 웰니스 휴식처 찾기
               </label>
             </div>
 
             <div className="space-y-4">
               <div>
-                <span className="text-[11px] text-gray-300 block mb-1 font-bold">1단계: 시·도 선택</span>
+                <span className="text-[11px] text-gray-300 block mb-1 font-bold">1단계: 권역 선택</span>
                 <select value={selectedRegion} onChange={handleRegionChange} className="bg-black/90 text-sm text-white w-full outline-none cursor-pointer font-bold p-3.5 rounded-xl border border-amber-500/40 focus:border-amber-300 transition-colors shadow-inner">
                   {Object.keys(regionData).map((key) => (
                     <option key={key} value={key} className="bg-[#1e1e24] text-white">
@@ -238,7 +238,7 @@ export default function MainClientUI() {
               </div>
 
               <div>
-                <span className="text-[11px] text-gray-300 block mb-1 font-bold">2단계: 구·시·군 선택</span>
+                <span className="text-[11px] text-gray-300 block mb-1 font-bold">2단계: 지역(구/시) 선택</span>
                 <select value={selectedDistrict} onChange={handleDistrictChange} className="bg-black/90 text-sm text-white w-full outline-none cursor-pointer font-bold p-3.5 rounded-xl border border-amber-500/40 focus:border-amber-300 transition-colors shadow-inner">
                   <option value="" className="bg-[#1e1e24] text-gray-400">구 / 시 / 군을 선택해주세요</option>
                   {Object.keys(currentDistricts).map((dKey) => (
@@ -250,7 +250,7 @@ export default function MainClientUI() {
               </div>
 
               <div>
-                <span className="text-[11px] text-gray-300 block mb-1 font-bold">3단계: 동 선택 (텍스트 필터)</span>
+                <span className="text-[11px] text-gray-300 block mb-1 font-bold">3단계: 상세 동 선택 (선택사항)</span>
                 <select value={selectedDong} onChange={(e) => setSelectedDong(e.target.value)} disabled={!selectedDistrict} className="bg-black/90 text-sm text-white w-full outline-none cursor-pointer font-medium p-3.5 rounded-xl border border-amber-500/40 disabled:opacity-30 transition-colors shadow-inner">
                   <option value="" className="bg-[#1e1e24] text-gray-400">동 전체 보기</option>
                   {currentDongs.map((dong, idx) => (
@@ -265,7 +265,7 @@ export default function MainClientUI() {
                 onClick={handleSearch}
                 className="w-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-300 text-black font-black py-4 rounded-2xl text-sm transition-all shadow-[0_0_30px_rgba(245,158,11,0.6)] mt-2 cursor-pointer transform active:scale-[0.98]"
               >
-                🚀 내 주변 웰니스 마사지 모아보기
+                🚀 내 주변 휴식처 모아보기
               </button>
             </div>
           </div>

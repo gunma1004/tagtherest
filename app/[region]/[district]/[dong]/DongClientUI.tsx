@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import ClientTextMixer from "../../../ClientTextMixer";
 
 interface DongClientUIProps {
   region: string;
@@ -10,13 +11,13 @@ interface DongClientUIProps {
   locationTitle: string;
 }
 
-// 🌟 정확히 5개의 제휴 샵 목록
+// 🌟 요청하신 태그더레스트 고정 제휴 샵 목록 (이름 변경 불가)
 const initialDongShops = [
-  { id: 1, name: "한국미녀홈타이", desc: "수도권 주요 지역 프리미엄 스웨디시 & 아로마 웰니스 테라피", phone: "0507-1280-3303", price: "100,000원부터~", image: "/shop1.jpg" },
-  { id: 2, name: "너무이쁜홈타이", desc: "품격 있는 힐링을 선사하는 정통 마사지 및 프라이빗 바디케어", phone: "0507-1280-3190", price: "60,000원부터~", image: "/shop2.jpg" },
-  { id: 3, name: "예쁜걸홈타이", desc: "철저한 위생 관리와 쾌적한 릴렉스 아로마 테라피 프로그램", phone: "0507-1280-3185", price: "60,000원부터~", image: "/shop3.jpg" },
-  { id: 4, name: "퀸즈홈테라피", desc: "전문 테라피스트들의 1:1 맞춤형 VIP 피로회복 웰니스 케어", phone: "0507-1280-3222", price: "60,000원부터~", image: "/shop4.jpg" },
-  { id: 5, name: "한국골든테라피", desc: "정직한 정찰제 운영과 편안한 힐링을 약속하는 감성 스웨디시", phone: "0507-1280-3360", price: "110,000원부터~", image: "/shop5.jpg" }
+  { id: 1, name: "한국미인테라피", desc: "도심 속 깊은 이완과 감성 테라피를 선사하는 프리미엄 웰니스 쉼터", phone: "0507-1280-3303", price: "100,000원부터~", image: "/shop1.jpg" },
+  { id: 2, name: "오늘밤테라피", desc: "지친 하루 끝에 가벼운 활력을 더해주는 프라이빗 바디 케어", phone: "0507-1280-3223", price: "60,000원부터~", image: "/shop2.jpg" },
+  { id: 3, name: "주주테라피", desc: "청결한 위생 관리와 쾌적한 환경에서 즐기는 전문 아로마 프로그램", phone: "0507-1280-3193", price: "60,000원부터~", image: "/shop3.jpg" },
+  { id: 4, name: "퀸즈홈테라피", desc: "전문 테라피스트들의 섬세한 터치로 완성되는 1:1 맞춤형 리프레시", phone: "0507-1280-3334", price: "60,000원부터~", image: "/shop4.jpg" },
+  { id: 5, name: "한국골든테라피", desc: "정직한 정찰제 운영과 포근한 안식을 약속하는 스페셜 힐링 스팟", phone: "0507-1280-3361", price: "110,000원부터~", image: "/shop5.jpg" }
 ];
 
 export default function DongClientUI({ region, district, dong, locationTitle }: DongClientUIProps) {
@@ -41,14 +42,17 @@ export default function DongClientUI({ region, district, dong, locationTitle }: 
             {locationTitle} 추천 웰니스 마사지 제휴점
           </h1>
           <p className="text-xs md:text-sm text-gray-400">
-            위치 테라피가 엄선한 신뢰할 수 있는 제휴 샵의 프로그램을 확인해보세요.
+            태그더레스트가 엄선한 신뢰할 수 있는 제휴 샵의 프로그램을 확인해보세요.
           </p>
         </section>
+
+        {/* 다이내믹 텍스트 믹서 배너 */}
+        <ClientTextMixer locationText={locationTitle} />
 
         {/* 샵 리스트 영역 (클릭 시 샵 상세 페이지로 이동) */}
         <section className="space-y-4">
           <div className="flex items-center justify-between border-b border-white/10 pb-3">
-            <h2 className="text-sm font-extrabold text-amber-300">✨ 실시간 추천 제휴 샵 (새로고침 시 변경)</h2>
+            <h2 className="text-sm font-extrabold text-amber-300">✨ 실시간 추천 제휴 스팟 (새로고침 시 변경)</h2>
             <span className="text-[11px] text-gray-400">총 5개 엄선</span>
           </div>
 
@@ -83,7 +87,7 @@ export default function DongClientUI({ region, district, dong, locationTitle }: 
         <section className="mt-12 pt-8 border-t border-white/10 space-y-6">
           <div className="text-center space-y-1">
             <span className="text-[11px] text-amber-400 font-extrabold uppercase tracking-widest">WELLNESS STORY & GUIDE</span>
-            <h2 className="text-xl md:text-2xl font-black text-white">📖 위치 테라피 웰니스 가이드</h2>
+            <h2 className="text-xl md:text-2xl font-black text-white">📖 태그더레스트 웰니스 가이드</h2>
             <p className="text-xs text-gray-400">몸과 마음의 피로를 효과적으로 해소하는 힐링 정보</p>
           </div>
 

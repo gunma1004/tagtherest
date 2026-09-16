@@ -2,14 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://wich-therapy.netlify.app"),
-  title: "생생 후기 | 위치 테라피 - 100% 실제 고객 방문 케어 이용 리뷰",
-  description: "서울·경기·인천 수도권 위치 테라피 제휴샵을 직접 이용하신 고객님들의 100% 솔직한 평점과 후기를 확인해 보세요.",
+  metadataBase: new URL("https://tagtherest.netlify.app"),
+  title: "생생 후기 | 태그더레스트 - 100% 실제 방문 고객 웰니스 휴식 리뷰",
+  description: "서울·경기·인천 수도권 태그더레스트 제휴 스팟을 직접 이용하신 고객님들의 100% 솔직한 평점과 후기를 확인해 보세요.",
   openGraph: {
-    title: "생생 후기 | 위치 테라피",
-    description: "위치 테라피 실제 고객님들의 100% 솔직한 방문 테라피 이용 후기",
-    url: "https://wich-therapy.netlify.app/reviews",
-    siteName: "위치 테라피",
+    title: "생생 후기 | 태그더레스트",
+    description: "태그더레스트 실제 고객님들의 100% 솔직한 웰니스 힐링 이용 후기",
+    url: "https://tagtherest.netlify.app/reviews",
+    siteName: "태그더레스트",
     locale: "ko_KR",
     type: "website",
   },
@@ -20,37 +20,37 @@ export default function ReviewsPage() {
     { 
       name: "서울 강남구 이용자", 
       rate: "★★★★★ 5.0", 
-      course: "VIP 코스",
+      course: "프리미엄 스웨디시",
       date: "최근 이용",
-      text: "방문 케어 신청했는데 신속하게 오셨어요. 어깨 뭉친 게 싹 풀려서 다음 날 컨디션이 최고였습니다!" 
+      text: "도심 속에서 온전한 휴식을 찾고 싶어 예약했는데 기대 이상이었습니다. 피로가 개운하게 풀려 다음 날 컨디션이 최고였어요!" 
     },
     { 
       name: "경기 수원시 이용자", 
       rate: "★★★★★ 5.0", 
-      course: "감성 스웨디시",
+      course: "아로마 릴렉스 테라피",
       date: "최근 이용",
-      text: "선입금 없는 후불제라 마음 편하게 이용했습니다. 관리사분 친절함과 테라피 실력 모두 완전 만족스럽네요." 
+      text: "선입금 없는 후불제라 마음 편하게 이용할 수 있었습니다. 관리사분 전문성과 친절함 모두 완벽하게 만족스럽네요." 
     },
     { 
       name: "인천 송도동 이용자", 
       rate: "★★★★★ 5.0", 
-      course: "아로마 오일 케어",
+      course: "스페셜 바디 마스터피스",
       date: "최근 이용",
-      text: "부드러운 아로마 향과 함께 뭉친 근육을 잘 짚어주셔서 힐링 제대로 했습니다. 주말마다 정기적으로 이용할 생각입니다." 
+      text: "은은한 아로마 향과 함께 긴장된 근육을 세심하게 풀어주셔서 힐링을 제대로 만끽했습니다. 정기적으로 찾게 될 것 같아요." 
     },
     { 
       name: "서울 마포구 이용자", 
       rate: "★★★★★ 5.0", 
-      course: "건식 릴렉싱 케어",
+      course: "컨디션 베이직 케어",
       date: "최근 이용",
-      text: "편안하게 관리받을 수 있는 게 가장 큰 장점이네요. 위생 관리도 철저해서 안심하고 받았습니다." 
+      text: "쾌적하고 프라이빗한 분위기 속에서 편안하게 케어를 받을 수 있는 점이 가장 마음에 듭니다. 위생도 아주 철저해요." 
     },
     { 
       name: "경기 성남시 이용자", 
       rate: "★★★★★ 5.0", 
-      course: "VIP 프리미엄",
+      course: "시그니처 VIP 코스",
       date: "최근 이용",
-      text: "위치 테라피 후기 보고 믿고 예약했는데 역대급 힐링이었습니다. 다음에도 꼭 다시 이용하겠습니다!" 
+      text: "태그더레스트 큐레이션을 보고 믿고 예약했는데 역대급 힐링 스팟을 발견했습니다. 다음에도 꼭 다시 방문할게요!" 
     },
   ];
 
@@ -67,7 +67,7 @@ export default function ReviewsPage() {
             실제 이용 고객 생생 후기
           </h1>
           <p className="text-xs md:text-sm text-gray-400">
-            위치 테라피를 직접 경험하신 고객님들의 100% 솔직한 피로회복 후기
+            태그더레스트와 함께 일상 속 깊은 안식을 경험하신 고객님들의 100% 솔직한 이야기
           </p>
         </div>
 
@@ -75,14 +75,14 @@ export default function ReviewsPage() {
         <div className="bg-gradient-to-r from-amber-500/10 via-amber-400/5 to-amber-500/10 border border-amber-500/30 p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-inner">
           <div>
             <span className="text-amber-300 font-extrabold text-sm md:text-base">
-              🏆 위치 테라피 고객 평균 만족도
+              🏆 태그더레스트 고객 평균 만족도
             </span>
             <p className="text-xs text-gray-300 mt-0.5">
-              철저한 검증과 100% 후불제 정직한 서비스로 높은 재방문율을 유지합니다.
+              엄격한 제휴 스팟 검증과 100% 후불제 정직한 운영으로 높은 신뢰를 이어갑니다.
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-2xl md:text-3xl font-black text-amber-400">4.98</span>
+            <span className="text-2xl md:text-3xl font-black text-amber-400">4.99</span>
             <span className="text-amber-400 text-sm">/ 5.0</span>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function ReviewsPage() {
             href="/"
             className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-400 text-black font-extrabold text-xs px-6 py-3.5 rounded-xl shadow-lg hover:from-amber-400 hover:to-yellow-300 transition-all active:scale-95"
           >
-            <span>🏠</span> 위치 테라피 홈으로 돌아가기
+            <span>🏠</span> 태그더레스트 홈으로 돌아가기
           </Link>
         </div>
 

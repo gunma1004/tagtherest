@@ -2,14 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://wich-therapy.netlify.app"),
-  title: "코스별 가격 안내 | 위치 테라피 - 100% 후불제 투명한 요금 가이드",
-  description: "타이, 아로마, 감성 스웨디시, VIP 코스 등 위치 테라피 제휴업체의 투명한 가격과 프로그램을 확인하세요. 선입금 없는 100% 안심 후불제.",
+  metadataBase: new URL("https://tagtherest.netlify.app"),
+  title: "웰니스 프로그램 및 정찰제 가격 안내 | 태그더레스트 - 투명한 요금 가이드",
+  description: "스웨디시, 아로마, 프라이빗 릴렉스 등 태그더레스트 제휴 스팟의 합리적이고 투명한 가격과 프로그램을 확인하세요. 100% 안심 후불제.",
   openGraph: {
-    title: "코스별 가격 안내 | 위치 테라피",
-    description: "위치 테라피의 투명하고 정직한 코스별 요금 및 프로그램 안내",
-    url: "https://wich-therapy.netlify.app/prices",
-    siteName: "위치 테라피",
+    title: "웰니스 프로그램 및 정찰제 가격 안내 | 태그더레스트",
+    description: "태그더레스트의 투명하고 정직한 코스별 요금 및 프로그램 안내",
+    url: "https://tagtherest.netlify.app/prices",
+    siteName: "태그더레스트",
     locale: "ko_KR",
     type: "website",
   },
@@ -18,27 +18,27 @@ export const metadata: Metadata = {
 export default function PricesPage() {
   const priceList = [
     { 
-      title: "타이 건식 케어 (60분)", 
+      title: "컨디션 베이직 케어 (60분)", 
       price: "60,000원부터~", 
-      desc: "전신 피로 해소 및 뭉친 근육을 부드럽게 풀어주는 기본 스트레칭 프로그램",
+      desc: "지친 신체의 긴장을 가볍게 정돈하고 편안한 안식을 선사하는 실속형 코스",
       badge: "가성비 추천"
     },
     { 
-      title: "아로마 오일 케어 (60분)", 
+      title: "아로마 릴렉스 테라피 (60분)", 
       price: "70,000원부터~", 
-      desc: "천연 아로마 오일을 활용한 부드러운 전신 릴렉싱 및 피부 보습 케어",
+      desc: "천연 에센셜 오일의 포근한 향과 부드러운 터치로 전신 순환을 돕는 프로그램",
       badge: "인기 코스"
     },
     { 
-      title: "감성 스웨디시 (60분)", 
+      title: "프리미엄 스웨디시 (60분)", 
       price: "90,000원부터~", 
-      desc: "림프 순환과 심신 안정을 돕는 감성 힐링 VIP 프리미엄 프로그램",
+      desc: "깊은 이완과 감성적인 힐링을 동시에 경험할 수 있는 시그니처 VIP 케어",
       badge: "만족도 1위"
     },
     { 
-      title: "베테랑 VIP 코스 (60분)", 
+      title: "스페셜 바디 마스터피스 (60분)", 
       price: "140,000원부터~", 
-      desc: "체형별 맞춤형 피로회복 특화 최고급 시그니처 힐링 케어",
+      desc: "개개인의 컨디션에 맞춘 섬세한 테크닉으로 최상의 재충전을 약속하는 코스",
       badge: "프리미엄"
     },
   ];
@@ -50,13 +50,13 @@ export default function PricesPage() {
         {/* 상단 타이틀 */}
         <div className="text-center space-y-2">
           <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">
-            TRANSPARENT PRICE GUIDE
+            TRANSPARENT WELLNESS PRICE GUIDE
           </span>
           <h1 className="text-3xl md:text-4xl font-black text-white">
-            투명한 코스별 가격 안내
+            정직하고 투명한 코스별 가격 안내
           </h1>
           <p className="text-xs md:text-sm text-gray-400">
-            위치 테라피는 100% 후불제 안심 예약 시스템으로 운영됩니다.
+            태그더레스트는 100% 후불제 안심 예약 시스템을 통해 신뢰할 수 있는 휴식을 지향합니다.
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export default function PricesPage() {
               🛡️ 100% 후불 안심 보장제
             </span>
             <p className="text-[11px] md:text-xs text-gray-300">
-              위치 테라피 모든 제휴업체는 관리사 방문 전 <span className="text-amber-400 font-bold">선입금 및 예약금을 절대 요구하지 않습니다.</span>
+              태그더레스트의 모든 제휴 스팟은 이용 전 <span className="text-amber-400 font-bold">선입금 및 예약금을 절대 요구하지 않습니다.</span>
             </p>
           </div>
         </div>
@@ -108,13 +108,13 @@ export default function PricesPage() {
             href="tel:0507-1280-3344"
             className="w-full sm:w-auto text-center bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold text-xs px-6 py-3.5 rounded-xl shadow-lg transition-all active:scale-95"
           >
-            📞 실시간 코스 및 요금 문의 (0507-1280-3344)
+            📞 실시간 프로그램 및 요금 문의 (0507-1280-3344)
           </a>
           <Link
             href="/"
             className="w-full sm:w-auto text-center bg-neutral-900 hover:bg-neutral-800 text-gray-300 hover:text-white border border-white/10 font-bold text-xs px-6 py-3.5 rounded-xl transition-all"
           >
-            🏠 위치 테라피 홈으로 돌아가기
+            🏠 태그더레스트 홈으로 돌아가기
           </Link>
         </div>
 

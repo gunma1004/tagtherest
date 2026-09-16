@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // 🌐 실제 서비스 도메인 주소로 통일
-  const baseUrl = 'https://wich-therapy.netlify.app';
+  // 🌐 태그더레스트 실제 서비스 도메인 주소로 통일
+  const baseUrl = 'https://tagtherest.netlify.app';
 
   // 1. 메인 홈 페이지
   const mainRoute: MetadataRoute.Sitemap = [
