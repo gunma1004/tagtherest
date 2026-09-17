@@ -50,13 +50,11 @@ function getModifiersPool(): string[] {
     "고품격 웰니스", "피로 회복 맞춤형", "안정감 있는", "조용하고 아늑한", "에너지 충전을 위한",
     "릴렉싱 바디케어", "프리미엄 힐링", "상쾌한 활력을 주는", "정성 가득한", "지친 몸을 위한"
   ];
-  
   const intensityWords = [
     "깊은", "부드러운", "섬세한", "꼼꼼한", "완벽한", 
     "탁월한", "특별한", "차별화된", "노련한", "깔끔한",
     "포근한", "산뜻한"
   ];
-
   const pool: string[] = [];
   for (const adj of baseAdjectives) {
     for (const int of intensityWords) {
@@ -65,7 +63,7 @@ function getModifiersPool(): string[] {
       pool.push(`고객 맞춤형 출장 케어를 선사하는 ${int} ${adj}`);
     }
   }
-  return pool; // 총 300개 이상 충족
+  return pool;
 }
 
 // 🌟 2. '마사지'가 반드시 포함된 서비스 종류 150개 풀 생성기
@@ -76,7 +74,6 @@ function getServiceTypesPool(): string[] {
     "집중 이완 마사지", "릴렉스 마사지 과정", "힐링 마사지 프로그램", "프리미엄 바디 마사지", 
     "맞춤형 바디 마사지", "토탈 마사지 솔루션", "바디 릴렉싱 마사지", "시그니처 마사지"
   ];
-
   const pool: string[] = [];
   for (const tech of coreTechniques) {
     for (const style of styles) {
@@ -86,7 +83,7 @@ function getServiceTypesPool(): string[] {
     }
     if (pool.length >= 150) break;
   }
-  return pool; // 총 150개 충족 (모두 '마사지' 포함)
+  return pool;
 }
 
 // 🌟 3. 상세 설명 100개 풀 생성기 ('출장'과 '마사지' 분산 포함)
@@ -109,7 +106,6 @@ function getDescriptionsPool(): string[] {
     "오래도록 지속되는 편안한 안정감을 전해드립니다.",
     "누적된 근육의 긴장을 개운하게 이완시켜 줍니다."
   ];
-
   const pool: string[] = [];
   for (const act of actions) {
     for (const eff of effects) {
@@ -118,7 +114,7 @@ function getDescriptionsPool(): string[] {
     }
     if (pool.length >= 100) break;
   }
-  return pool; // 총 100개 충족
+  return pool;
 }
 
 // 💎 태그더레스트 전용 5개 제휴 샵 데이터
@@ -144,7 +140,7 @@ const shopData: Record<
     desc: "도심 속 깊은 이완과 감성 테라피를 선사하는 프리미엄 웰니스 쉼터! 지친 일상을 상쾌하게 정돈하는 1:1 맞춤 출장 케어 프로그램으로 편안한 안식을 선사하며 품격 있는 마사지 서비스를 제공합니다.",
     courses: [
       { name: "프리미엄 웰니스 아로마 순환 케어", time: "90분", price: "100,000원", desc: "부드러운 오일링과 힐링 마사지로 전신 순환을 돕는 코스" },
-      { name: "프리미엄 웰니스 아로마 롱타임 테라피", time: "120분", price: "130,000원", desc: "여유로운 시간 동안 온전한 휴식을 누리는 120분 마사지 프로그램" },
+      { name: "프리미엄 웰니스 아로마 롱타임 테라피", time: "120분", price: "130,000원", desc: "여유로운 시간 동안 온전한 휴식을 누리는 120분 프로그램" },
       { name: "VIP 감성 스웨디시 케어 A", time: "60분", price: "110,000원", desc: "감성적인 터치로 굳은 긴장을 부드럽게 녹여주는 스웨디시 바디케어" },
       { name: "VIP 감성 스웨디시 케어 B", time: "90분", price: "130,000원", desc: "깊은 피로 회복과 안정감을 선사하는 추천 VIP 마사지 코스" },
       { name: "VIP 감성 스웨디시 풀케어 테라피", time: "120분", price: "150,000원", desc: "머리부터 발끝까지 여유롭게 이완하는 120분 전신 풀코스" },
@@ -161,7 +157,7 @@ const shopData: Record<
     image: "/shop2.jpg",
     desc: "지친 하루 끝에 가벼운 활력을 더해주는 프라이빗 케어! 편안한 공간에서 출장 서비스를 통해 타이 릴렉스 및 아로마 마사지로 굳어있던 바디 밸런스를 되찾아드립니다.",
     courses: [
-      { name: "타이 스트레칭 베이직 케어", time: "60분", price: "60,000원", desc: "전신 근육을 시원하게 늘려주어 뻐근함을 풀어주는 기본 마사지" },
+      { name: "타이 스트레칭 베이직 케어", time: "60분", price: "60,000원", desc: "전신 근육을 시원하게 늘려주어 뻐근함을 풀어주는 기본 프로그램" },
       { name: "타이 릴렉스 스탠다드 테라피", time: "90분", price: "80,000원", desc: "여유로운 전신 스트레칭과 케어로 묵은 긴장을 덜어내는 추천 코스" },
       { name: "타이 딥케어 프리미엄 프로그램", time: "120분", price: "100,000원", desc: "전신 구석구석을 꼼꼼하게 이완시켜 주는 120분 집중 마사지 코스" },
       { name: "아로마 순환 릴렉스 케어", time: "60분", price: "70,000원", desc: "부드러운 에센셜 오일로 전신 순환을 촉진하는 아로마 바디케어" },
@@ -199,7 +195,7 @@ const shopData: Record<
       { name: "VIP 맞춤형 힐링 마사지 (60분)", time: "60분", price: "100,000원", desc: "집중적인 피로 부위를 효율적으로 풀어주는 스페셜 바디케어" },
       { name: "VIP 맞춤형 힐링 마사지 (90분)", time: "90분", price: "120,000원", desc: "체계적인 압 조절과 이완 기법의 고품격 마사지 테라피" },
       { name: "VIP 맞춤형 힐링 마사지 (120분)", time: "120분", price: "140,000원", desc: "차별화된 안락함을 선사하는 최고급 맞춤 케어" },
-      { name: "VIP 하이브리드 종합 웰니스 케어", time: "150분", price: "160,000원", desc: "타이 스트레칭과 아로마 마사지, 풋케어의 올인원 패키지" },
+      { name: "VIP 하이브리드 종합 웰니스 케어", time: "150분", price: "160,000원", desc: "타이 스트레칭과 아로마 마사지, 풋케어를 모두 담은 종합 패키지" },
       { name: "한국인 전문 힐러 마사지 (60분)", time: "60분", price: "140,000원", desc: "실력파 한국인 관리사의 1:1 품격 있는 감성 스웨디시 케어" },
       { name: "한국인 전문 힐러 마사지 (90분)", time: "90분", price: "180,000원", desc: "극상의 만족감을 약속드리는 하이엔드 프리미엄 마사지 코스" },
     ],
@@ -248,7 +244,6 @@ const shopData: Record<
   },
 };
 
-// 🎯 대규모 조합 풀 및 출장·마사지 분산 배치 적용
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const { region, district, shopId } = resolvedParams;
@@ -309,82 +304,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "website",
     },
   };
-}
-
-// 🌟 수식어 300개 풀 생성기
-function getModifiersPool(): string[] {
-  const baseAdjectives = [
-    "프라이빗한", "전문적인", "쾌적한 공간의", "안락한 분위기 속", "정성 어린 손길의", 
-    "신뢰할 수 있는", "차분한 힐링", "품격 있는", "맞춤형 바디케어", "일상 회복을 위한",
-    "엄선된 제휴점의", "편안한 휴식을 선사하는", "체계적인 프로그램의", "도심 속 오아시스", "부드러운 릴렉싱",
-    "고품격 웰니스", "피로 회복 맞춤형", "안정감 있는", "조용하고 아늑한", "에너지 충전을 위한",
-    "릴렉싱 바디케어", "프리미엄 힐링", "상쾌한 활력을 주는", "정성 가득한", "지친 몸을 위한"
-  ];
-  const intensityWords = [
-    "깊은", "부드러운", "섬세한", "꼼꼼한", "완벽한", 
-    "탁월한", "특별한", "차별화된", "노련한", "깔끔한",
-    "포근한", "산뜻한"
-  ];
-  const pool: string[] = [];
-  for (const adj of baseAdjectives) {
-    for (const int of intensityWords) {
-      pool.push(`신속한 출장 서비스를 제공하는 ${int} ${adj}`);
-      pool.push(`편안한 출장 홈케어를 지향하는 ${int} ${adj}`);
-      pool.push(`고객 맞춤형 출장 케어를 선사하는 ${int} ${adj}`);
-    }
-  }
-  return pool;
-}
-
-// 🌟 서비스 종류 150개 풀 생성기 ('출장'과 분산된 '마사지' 포함)
-function getServiceTypesPool(): string[] {
-  const coreTechniques = ["스웨디시", "아로마", "타이", "스포츠", "힐링", "바디케어", "릴렉싱", "웰니스", "전문", "프리미엄", "감성", "토탈"];
-  const styles = [
-    "감성 마사지 코스", "맞춤형 마사지 프로그램", "전신 관리 마사지", "전문 테크닉 마사지", 
-    "집중 이완 마사지", "릴렉스 마사지 과정", "힐링 마사지 프로그램", "프리미엄 바디 마사지", 
-    "맞춤형 바디 마사지", "토탈 마사지 솔루션", "바디 릴렉싱 마사지", "시그니처 마사지"
-  ];
-  const pool: string[] = [];
-  for (const tech of coreTechniques) {
-    for (const style of styles) {
-      pool.push(`${tech} 기반의 ${style}`);
-      pool.push(`${tech} 전문 ${style}`);
-      if (pool.length >= 150) break;
-    }
-    if (pool.length >= 150) break;
-  }
-  return pool;
-}
-
-// 🌟 상세 설명 100개 풀 생성기
-function getDescriptionsPool(): string[] {
-  const actions = [
-    "숙련된 테라피스트가 고객 계신 곳으로 직접 출장하여 진행하는 전문 마사지 프로그램은", 
-    "엄선된 제휴 샵에서 출장 형태로 제공하는 맞춤형 마사지 서비스는", 
-    "지친 일상 속에서 편안하게 불러보는 출장 힐링 마사지 코스는", 
-    "안락한 공간에서 즐기는 전문적인 출장 테라피 마사지는", 
-    "체계적인 손길을 통해 출장 서비스로 제공되는 프라이빗 마사지 솔루션은", 
-    "부드러운 테크닉이 돋보이는 릴렉스 중심의 출장 바디 마사지 안내는"
-  ];
-  const effects = [
-    "몸과 마음의 피로를 부드럽게 씻어내 줍니다.",
-    "온전한 휴식과 재충전의 시간을 선사합니다.",
-    "지친 신체 리듬을 편안하게 되찾아드립니다.",
-    "일상의 스트레스를 말끔히 해소해 줍니다.",
-    "최상의 릴렉스와 안락함을 제공합니다.",
-    "몸의 긴장을 풀고 가벼운 활력을 채워줍니다.",
-    "오래도록 지속되는 편안한 안정감을 전해드립니다.",
-    "누적된 근육의 긴장을 개운하게 이완시켜 줍니다."
-  ];
-  const pool: string[] = [];
-  for (const act of actions) {
-    for (const eff of effects) {
-      pool.push(`${act} ${eff}`);
-      if (pool.length >= 100) break;
-    }
-    if (pool.length >= 100) break;
-  }
-  return pool;
 }
 
 export default async function DistrictShopDetailPage({ params }: PageProps) {
