@@ -266,10 +266,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const selectedService = serviceTypesPool[serviceIndex];
   const selectedDesc = descriptionsPool[descIndex];
 
-  // 🌟 '출장'과 '마사지'가 모두 들어가되 직접 붙지 않고 분산되도록 구성한 메타 태그 (브랜드명 제거)
   const formattedTitle = `${locationPrefix} ${selectedModifier} 제휴점의 ${selectedService}`;
-  const formattedDesc = `${locationPrefix} 맞춤형 힐링 네트워크. ${selectedModifier} 진행되는 ${selectedService}. ${selectedDesc} (${shop.name})`;
-
+  const formattedDesc = `${locationPrefix} 맞춤형 힐링 네트워크. ${selectedModifier} 진행되는 ${selectedService}. ${selectedDesc}`;
   return {
     metadataBase: new URL("https://tagtherest.netlify.app"),
     title: {
