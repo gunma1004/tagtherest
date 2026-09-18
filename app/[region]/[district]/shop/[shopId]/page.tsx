@@ -41,18 +41,22 @@ function parseLocationText(region: string, district: string): string {
   return `${regionName} ${decodedDistrict}`.replace(/\s+/g, " ").trim();
 }
 
-// 🌟 [출장]과 [마사지]가 절대 붙지 않고 중간에 1개의 단어가 들어가도록 압축한 수식어 풀 (40개)
-const shopShortModifiers = [
-  '출장 전문 마사지', '출장 방문 마사지', '출장 릴렉스 마사지', '출장 맞춤 마사지', 
-  '출장 웰니스 마사지', '출장 케어 마사지', '출장 스웨디시 마사지', '출장 아로마 마사지', 
-  '출장 홈케어 마사지', '출장 스파 마사지', '출장 프리미엄 마사지', '출장 안심 마사지', 
-  '출장 신속 마사지', '출장 소프트 마사지', '출장 딥티슈 마사지', '출장 커스텀 마사지', 
-  '출장 스페셜 마사지', '출장 피로해소 마사지', '출장 실속형 마사지', '출장 쾌적한 마사지', 
-  '출장 종합 마사지', '출장 최고급 마사지', '출장 고품격 마사지', '출장 스마트 마사지', 
-  '출장 집중 마사지', '출장 테라피 마사지', '출장 감성 마사지', '출장 힐링 마사지',
-  '출장 바디 마사지', '출장 전신 마사지', '출장 정통 마사지', '출장 VIP 마사지',
-  '출장 럭셔리 마사지', '출장 오일 마사지', '출장 밸런스 마사지', '출장 리프레시 마사지',
-  '출장 클래식 마사지', '출장 시그니처 마사지', '출장 컴포트 마사지', '출장 디톡스 마사지'
+// 🌟 1단: '출장'과 '마사지'가 절대 붙지 않고 중간에 수식어가 들어간 핵심 키워드 풀 (24개)
+const primaryShopModifiers = [
+  '출장 스웨디시 마사지 추천', '출장 아로마 마사지 추천', '출장 감성 테라피 마사지', '출장 힐링 바디 마사지 추천',
+  '출장 프리미엄 마사지 추천', '출장 전문 릴렉스 마사지', '출장 안심 방문 마사지 추천', '출장 맞춤형 전신 마사지',
+  '출장 딥티슈 힐링 마사지', '출장 신속 홈케어 마사지', '출장 바디케어 마사지 추천', '출장 VIP 웰니스 마사지',
+  '출장 림프 순환 마사지 추천', '출장 쾌적한 힐링 마사지', '출장 타이 스트레칭 마사지', '출장 소프트 릴렉스 마사지',
+  '출장 토탈 케어 마사지 추천', '출장 프라이빗 힐링 마사지', '출장 정통 바디 마사지 추천', '출장 피로회복 전신 마사지',
+  '출장 오일 테라피 마사지', '출장 밸런스 케어 마사지', '출장 명품 감성 마사지', '출장 1:1 맞춤 마사지 추천'
+];
+
+// 🌟 2단: CTR을 극대화하는 롱테일 서브 소구 문구 풀 (구분자 '｜' 뒤에 위치, 12개)
+const secondaryShopSubTitles = [
+  '전국 감성 아로마 케어 총정리', '1:1 프라이빗 힐링 코스 안내', '인기 제휴 샵 코스 및 요금 비교',
+  '24시 상시 방문 안심 프로그램', '정직한 정찰제 안심 케어 안내', '전신 피로회복 맞춤 프로그램',
+  '숙련된 전문 힐러진 코스 정리', '부드러운 오일 릴렉스 케어 안내', '프리미엄 100% 후불 안심 케어',
+  '체계적인 전신 웰니스 코스 안내', '당일 예약 맞춤 힐링 스팟 추천', '인기 제휴점 상세 코스 총정리'
 ];
 
 // 🌟 상세 설명 풀 (30개)
@@ -222,16 +226,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const locationPrefix = parseLocationText(region, district);
 
-  // 🌟 구 샵 전용 순차적 인덱스 계산 (shopId 포함, 1,000개 이상 문서 고유 조합 보장)
-  const seedString = `${locationPrefix}-${shopId}-tagtherest-district-shop-short-seo`;
+  // 🌟 구 샵 전용 순차적 인덱스 계산 (shopId 반영 -> 1~5번 샵 간 고유 조합 보장)
+  const seedString = `${locationPrefix}-${shopId}-expanded-district-shop-seo`;
   const charSum = seedString.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
   
-  const modIdx = charSum % shopShortModifiers.length;
+  const priIdx = charSum % primaryShopModifiers.length;
+  const secIdx = (charSum * 3) % secondaryShopSubTitles.length;
   const descIdx = (charSum * 7) % shopDescriptions.length;
 
-  // 💡 [지역] [출장 수식어 마사지] 형태로 25자 내외 압축 (도메인/샵 이름 배제)
-  const formattedTitle = `${locationPrefix} ${shopShortModifiers[modIdx]}`;
-  const formattedDesc = `${locationPrefix} 전문 홈케어 정보. ${shopDescriptions[descIdx]} 편안한 휴식을 누려보세요.`;
+  // 💡 [지역] [출장 1단 키워드]｜[2단 소구 문구] 구조로 약 35~40자 구성 (도메인/상호명 배제)
+  const formattedTitle = `${locationPrefix} ${primaryShopModifiers[priIdx]}｜${secondaryShopSubTitles[secIdx]}`;
+  const formattedDesc = `${locationPrefix} 전문 홈케어 정보. ${secondaryShopSubTitles[secIdx]}. ${shopDescriptions[descIdx]}`;
 
   return {
     metadataBase: new URL("https://tagtherest.netlify.app"),

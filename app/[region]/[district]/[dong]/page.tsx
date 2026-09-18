@@ -33,18 +33,20 @@ function safeDecode(str: string): string {
   return decoded.trim();
 }
 
-// 🌟 출장을 완전히 배제한 순수 마사지 수식어 풀 (간결하고 임팩트 있는 형태, 40개)
-const dongModifiers = [
-  '전문 힐링 마사지', '프라이빗 맞춤 마사지', '웰니스 바디 마사지', '스웨디시 감성 마사지',
-  '아로마 오일 마사지', '럭셔리 스파 마사지', 'VIP 프리미엄 마사지', '소프트 릴렉스 마사지',
-  '딥티슈 바디 마사지', '스페셜 힐링 마사지', '피로회복 전신 마사지', '맞춤형 스웨디시 마사지',
-  '실속형 바디 마사지', '종합 웰니스 마사지', '최고급 감성 마사지', '전문 바디케어 마사지',
-  '맞춤 테라피 마사지', '1:1 프라이빗 마사지', '정통 스웨디시 마사지', '스페셜 아로마 마사지',
-  '시원한 전신 마사지', '편안한 릴렉스 마사지', '고품격 테라피 마사지', '전문 아로마 마사지',
-  '스웨디시 테라피 마사지', '딥티슈 힐링 마사지', '웰니스 스파 마사지', '정통 바디 마사지',
-  '쾌적한 힐링 마사지', '종합 테라피 마사지', '최고급 바디 마사지', '전문 릴렉싱 마사지',
-  '동네 안심 마사지', '우리동네 맞춤 마사지', '편안한 쉼 마사지', '활력 충전 마사지',
-  '근육이완 힐링 마사지', '바디 밸런스 마사지', '토탈 리프레시 마사지', '데일리 케어 마사지'
+// 🌟 1단: 메인 코스 및 검색 타겟 키워드 풀 (출장 완전 배제)
+const primaryServiceTypes = [
+  '스웨디시 마사지 추천', '아로마 마사지 추천', '타이 마사지 추천', '힐링 바디케어 추천',
+  '감성 테라피 마사지', '프리미엄 전신 마사지', '림프 순환 마사지 추천', '맞춤 릴렉스 마사지',
+  '딥티슈 힐링 마사지', '스포츠 바디 마사지', '호텔식 감성 마사지', 'VIP 웰니스 테라피',
+  '전문 바디 마사지 추천', '아로마 릴렉싱 마사지', '스웨디시 힐링 테라피', '체형 맞춤 전신 마사지'
+];
+
+// 🌟 2단: CTR을 높이는 롱테일 소구 문구 풀 (구분자 뒤에 위치)
+const secondarySubTitles = [
+  '전국 감성 아로마 케어 총정리', '1:1 프라이빗 힐링 코스 안내', '동네 인기 제휴 샵 코스 및 요금',
+  '내 주변 안심 힐링 스팟 가이드', '전신 피로회복 맞춤 프로그램', '정직한 정찰제 안심 케어 안내',
+  '숙련된 전문 힐러진 프로그램 정리', '부드러운 오일 릴렉스 케어 안내', '도심 속 프라이빗 휴식처 총정리',
+  '당일 예약 맞춤 힐링 스팟 추천', '체계적인 전신 웰니스 코스 안내', '인기 샵 상세 프로그램 및 팁'
 ];
 
 // 🌟 상세 설명 풀 (30개)
@@ -72,15 +74,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const locationTitle = `${regionName} ${districtName} ${dongName}`.trim();
 
   // 🌟 순차적 인덱스 계산 (출장 배제, 1,000개 이상 문서 고유 조합 보장)
-  const seedString = `${locationTitle}-dong-tagtherest-pure-seo`;
+  const seedString = `${locationTitle}-expanded-dong-seo`;
   const charSum = seedString.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
   
-  const modIdx = charSum % dongModifiers.length;
+  const priIdx = charSum % primaryServiceTypes.length;
+  const secIdx = (charSum * 3) % secondarySubTitles.length;
   const descIdx = (charSum * 7) % dongDescriptions.length;
 
-  // 💡 [지역 구 동] [수식어 마사지] 형태로 25자 내외 압축 (도메인/상호명 배제)
-  const finalTitle = `${locationTitle} ${dongModifiers[modIdx]}`;
-  const finalDescription = `${locationTitle} 마사지 샵 정보. ${dongDescriptions[descIdx]}`;
+  // 💡 [지역 구 동] [1단 키워드]｜[2단 소구 문구] 구조로 약 35~40자 구성
+  const finalTitle = `${locationTitle} ${primaryServiceTypes[priIdx]}｜${secondarySubTitles[secIdx]}`;
+  const finalDescription = `${locationTitle} 마사지 샵 정보. ${secondarySubTitles[secIdx]}. ${dongDescriptions[descIdx]}`;
 
   return {
     metadataBase: new URL("https://tagtherest.netlify.app"),
