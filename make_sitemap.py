@@ -33,7 +33,7 @@ def generate_sitemap():
             "changefreq": "weekly"
         })
 
-    # 4. 제공해주신 서울, 경기, 인천 전체 지역 데이터 구조
+    # 4. 서울, 경기, 인천 전체 지역 데이터 구조
     regionData = {
         "seoul": {
             "name": "서울특별시",
@@ -132,50 +132,84 @@ def generate_sitemap():
         }
     }
 
-    # 5. 계층 구조 순회하며 /region/district/shop 및 /healing 경로까지 일괄 생성
+    # 5. [신규 추가] 마사지 시(권역) 메인 페이지 (/massage/seoul, /massage/gyeonggi, /massage/incheon)
+    for region in regionData.keys():
+        url_entries.append({
+            "loc": f"{base_url}/massage/{region}",
+            "priority": "0.95",
+            "changefreq": "daily"
+        })
+
+    # 6. 계층 구조 순회하며 신규 /massage 라우트 및 기존 경로 일괄 생성
     for region, reg_info in regionData.items():
         for district_key, dist_info in reg_info["districts"].items():
             district_name = dist_info["name"]
             encoded_district = urllib.parse.quote(district_name)
 
-            # 5-1. 구/시 단위 페이지
+            # ----------------------------------------------------
+            # 6-A. [신규 핵심] 마사지 구/시 페이지 (/massage/seoul/강남구)
+            # ----------------------------------------------------
             url_entries.append({
-                "loc": f"{base_url}/{region}/{encoded_district}",
+                "loc": f"{base_url}/massage/{region}/{encoded_district}",
                 "priority": "0.9",
                 "changefreq": "daily"
             })
 
-            # 5-2. 구 단위 하위 샵 상세 페이지 (/shop/1 ~ 5)
+            # 6-B. [신규 핵심] 마사지 구 샵 상세 페이지 (/massage/seoul/강남구/shop/1~5)
             for s_id in shop_ids:
                 url_entries.append({
-                    "loc": f"{base_url}/{region}/{encoded_district}/shop/{s_id}",
-                    "priority": "0.8",
+                    "loc": f"{base_url}/massage/{region}/{encoded_district}/shop/{s_id}",
+                    "priority": "0.85",
                     "changefreq": "weekly"
                 })
 
-            # 5-3. 힐링 테라피 권역별 페이지 (/healing/...)
+            # ----------------------------------------------------
+            # 6-C. [기존 경로 유지] 기존 구/시 페이지 및 구 단위 샵 상세
+            # ----------------------------------------------------
+            url_entries.append({
+                "loc": f"{base_url}/{region}/{encoded_district}",
+                "priority": "0.8",
+                "changefreq": "weekly"
+            })
+            for s_id in shop_ids:
+                url_entries.append({
+                    "loc": f"{base_url}/{region}/{encoded_district}/shop/{s_id}",
+                    "priority": "0.75",
+                    "changefreq": "weekly"
+                })
+
+            # 6-D. [기존 경로 유지] 힐링 테라피 권역별 페이지 (/healing/...)
             url_entries.append({
                 "loc": f"{base_url}/healing/{region}/{encoded_district}",
-                "priority": "0.9",
-                "changefreq": "daily"
+                "priority": "0.8",
+                "changefreq": "weekly"
             })
 
-            # 5-4. 세부 동 단위 페이지 및 동 하위 샵 상세 페이지
+            # ----------------------------------------------------
+            # 6-E. 동 단위 하위 순회
+            # ----------------------------------------------------
             for dong in dist_info["dongs"]:
                 encoded_dong = urllib.parse.quote(dong)
 
-                # 동 단위 페이지
+                # 🌟 [신규 핵심] 마사지 동 페이지 (/massage/seoul/강남구/역삼1동)
                 url_entries.append({
-                    "loc": f"{base_url}/{region}/{encoded_district}/{encoded_dong}",
+                    "loc": f"{base_url}/massage/{region}/{encoded_district}/{encoded_dong}",
                     "priority": "0.85",
                     "changefreq": "daily"
                 })
 
-                # 동 하위 샵 상세 페이지
+                # [기존 경로 유지] 기존 동 단위 페이지
+                url_entries.append({
+                    "loc": f"{base_url}/{region}/{encoded_district}/{encoded_dong}",
+                    "priority": "0.7",
+                    "changefreq": "weekly"
+                })
+
+                # [기존 경로 유지] 기존 동 하위 샵 상세 페이지
                 for s_id in shop_ids:
                     url_entries.append({
                         "loc": f"{base_url}/{region}/{encoded_district}/{encoded_dong}/shop/{s_id}",
-                        "priority": "0.75",
+                        "priority": "0.65",
                         "changefreq": "weekly"
                     })
 
@@ -199,7 +233,7 @@ def generate_sitemap():
     with open(file_name, "w", encoding="utf-8") as f:
         f.write("\n".join(xml_content))
 
-    print(f"🎉 태그더레스트 전체 지역 및 샵 상세 페이지를 포함하여 총 {len(url_entries)}개의 URL이 public/sitemap.xml로 생성되었습니다!")
+    print(f"🎉 태그더레스트 신규 마사지(/massage/...) 및 전체 지역/샵을 포함하여 총 {len(url_entries)}개의 URL이 public/sitemap.xml로 생성되었습니다!")
 
 if __name__ == "__main__":
     generate_sitemap()
